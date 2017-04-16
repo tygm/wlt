@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    
+    <ion-title text-center>夫子庙</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="openSeceneList($event)">
+        <ion-icon name="navigate"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content scroll="false">
+<div class="bannerwrapper">
+  <img class="bannerimg" src="../../assets/img/banner_02.jpg"/>
+  <p class="bannerLeftInfo1">南京夫子庙</p>
+  <p class="bannerLeftInfo2">江苏南京 | AAAAA级</p>
+  <p class="bannerRightInfo1">5~16℃</p>
+  <p class="bannerRightInfo2">晴</p>
+   <ion-icon name="sunny" class="bannerWeather"></ion-icon>
+</div>
+<ion-row text-center class="menu" style="margin-top:5px;height:95px;">
+  <ion-col><img src="../../assets/img/home-icon_01.png"/><br>景点介绍</ion-col>
+  <ion-col><img src="../../assets/img/home-icon_02.png"/><br>导航指引</ion-col>
+  <ion-col><img src="../../assets/img/home-icon_03.png"/><br>线上购票</ion-col>
+  <ion-col><img src="../../assets/img/home-icon_04.png"/><br>语音导游</ion-col>
+</ion-row>
+	<div id="homemap" style="width:100%;"></div>
+</ion-content>

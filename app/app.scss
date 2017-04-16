@@ -1,0 +1,150 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+$bannerTextMargin: 10px;
+$borderColor:#ddd;
+$mainThemeColor:#7BC729;
+///隐藏百度地图logo。。
+.anchorBL{  
+       display:none;  
+   }  
+.bannerimg{
+    width:100%;
+    height:180px;
+}
+.bannerwrapper{
+    position:relative;
+}
+.bannerLeftInfo1{
+    position:absolute;
+    bottom: 30px;
+    left: $bannerTextMargin;
+    font-size: 18px;
+    color: white;
+}
+.bannerLeftInfo2{
+    position:absolute;
+    bottom: 5px;
+    left: $bannerTextMargin;
+    font-size: 14px;
+    color: white;
+}
+.bannerRightInfo1{
+    position:absolute;
+    bottom: 30px;
+    right: $bannerTextMargin;
+    font-size: 18px;
+    color: white;
+    width: 80px;
+    text-align: left;
+}
+.bannerRightInfo2{
+    position:absolute;
+    bottom: 5px;
+    right: $bannerTextMargin;
+    font-size: 14px;
+    color: white;
+    width: 80px;
+    text-align: left;
+}
+.bannerWeather{
+    position:absolute;
+    bottom: 30px;
+    right: 100px;
+    font-size: 30px;
+    color: white;
+}
+.menu{
+    font-size: 14px;
+    text-align: center;
+}
+.menu img{
+    width: 50px;
+    height: 50px;
+}
+.small_menu_wrapper{
+    border-top: 1px solid $borderColor;
+    border-bottom: 1px solid $borderColor;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}
+.menu_small{
+    font-size: 11px;
+}
+.menu_small img{
+    width: 20px;
+    height: 20px;
+}
+.menu_small ion-col:nth-last-child(n+2){
+    border-right: 1px solid $borderColor;
+}
+.contentBg{
+    background: #F4F4F4;
+}
+.weatherContailer{
+    padding:10px 0px 10px 0px;
+}
+.weatherContailer .weatherArea{
+    background:white;padding:10px 15px;
+    display: flex;
+    align-items: center;
+}
+.weatherContailer img{
+    width:40px;
+    height: 40px;
+}
+.weatherContailer .tempNumber{
+    font-size: 35px;
+}
+.weatherContailer .tempNumberIcon{
+        align-self: flex-start;
+            margin-top: 4px;
+}
+.weatherContailer .weahterdesc1{
+        font-size: 13px;
+}
+.weatherContailer .weahterdesc2{
+        font-size: 13px;
+        color: #aaa;
+}
+.verticalBlock{
+    display: inline-block;
+    width:4px;
+    height:16px;
+    margin-right:10px;
+    background: $mainThemeColor;
+}
+.produce_list_item{
+    border-top:1px solid $borderColor;
+    padding-left: 0px;
+}
+.produce_list_item .item-inner{
+    padding-right: 0px!important;
+}
+.produce_list_item .productimg{
+    width: 100px;
+}
+.produce_list_item .desc1{
+    color:#ccc;font-size:12px;
+}
+.produce_list_item .desc2{
+    color:red;font-size:12px;
+}
+.produce_list_item .descInfo{
+    align-self: flex-end;
+        margin-right: 0px;
+}

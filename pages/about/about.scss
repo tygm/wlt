@@ -1,0 +1,26 @@
+page-about {
+
+}
+
+$mainThemeColor:#7BC729;
+.userInfoArea{
+    display:flex;
+    height:100px;
+    background: $mainThemeColor;
+    align-items: center;
+    padding:15px;
+}
+.userInfoArea .avatar{
+    border-radius: 100%;
+    width:60px;
+    height: 60px;
+}
+.userInfoArea .nameAndPhoneArea{
+    flex:1;
+    color:white;
+    margin-left:10px;
+}
+.usercenter-item-img{
+    width:30px;
+    height: 30px;
+}
