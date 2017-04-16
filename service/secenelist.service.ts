@@ -25,7 +25,7 @@ export class SeneceListFactory{
         return promise;
     }
 
-    setCurrentSecene(id:number):Promise<Secene>{
+    getSepecifySecene(id:number):Promise<Secene>{
         let promise=new Promise(function(resolve,reject){
             let secenes:Secene[]=[{
                 id:1,name:"夫子庙",desc:"",pic:[],subSecene:[]
@@ -38,9 +38,14 @@ export class SeneceListFactory{
             },{
                 id:5,name:"长城",desc:"",pic:[],subSecene:[]
             }];
-            //SeneceListFactory.currentSecene=secenes[id];
-            resolve(true);
+            resolve(secenes[id]);
         });
         return promise;
+    }
+    setCurrentSecene(secene:Secene){
+         this.currentSecene.name=secene.name;
+    }
+    getCurrentSecene():Secene{
+        return this.currentSecene;
     }
 }

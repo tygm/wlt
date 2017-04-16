@@ -21,8 +21,10 @@ export class SeceneList {
     this.viewCtrl.dismiss();
   }
   changeLoc(id:number){
-    this.mSeneceListFactory.setCurrentSecene(id).then(
-      result=>{if(result){alert("景点已切换");}}
+    this.mSeneceListFactory.getSepecifySecene(id).then(
+      result=>{
+        this.mSeneceListFactory.setCurrentSecene(result);
+      }
     );
   }
 }

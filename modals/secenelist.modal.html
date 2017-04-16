@@ -11,7 +11,7 @@
 </ion-header>
 <ion-content>
  <ion-list>
- <ion-item *ngFor="let secene of seneces" (click)="changeLoc()">
+ <ion-item *ngFor="let secene of seneces;let i = index" (click)="changeLoc(i)">
    <h3>{{secene.name}}</h3>
  </ion-item>
  </ion-list>
