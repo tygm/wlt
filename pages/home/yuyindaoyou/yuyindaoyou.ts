@@ -3,6 +3,9 @@ import { SeneceListFactory } from '../../../service/secenelist.service';
 import { Secene } from '../../../model/secene';
 import {APPConfigService} from '../../../appconstant/constant.service';
 import { IBeacon } from '@ionic-native/ibeacon';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
+
 declare var BMap;
 @Component({templateUrl:"yuyindaoyou.html"})
 export class Yuyindaoyou{
@@ -10,37 +13,60 @@ export class Yuyindaoyou{
     mapInited:boolean=false;
     constructor(public mSeneceListFactory:SeneceListFactory
     ,public render:Renderer,public el:ElementRef,public mAPPConfigService:APPConfigService,
-    private ibeacon: IBeacon) {
+    private ibeacon: IBeacon,private transfer: Transfer, private file: File) {
         this.secene=mSeneceListFactory.getCurrentSecene();
-        this.ibeacon.requestAlwaysAuthorization();
-        let delegate = this.ibeacon.Delegate();
+        //this.ibeacon.requestAlwaysAuthorization();
+        //let delegate = this.ibeacon.Delegate();;
         // Subscribe to some of the delegate's event handlers
-        delegate.didRangeBeaconsInRegion()
-        .subscribe(
-            data => console.log('didRangeBeaconsInRegion: ', data),
-            error => console.error()
-        );
-        delegate.didStartMonitoringForRegion()
-        .subscribe(
-            data => console.log('didStartMonitoringForRegion: ', data),
-            error => console.error()
-        );
-        delegate.didEnterRegion()
-        .subscribe(
-            data => {
-            console.log('didEnterRegion: ', data);
-            }
-        );
-        let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon','fda50693-a4e2-4fb1-afcf-c6eb07647825');
+        // delegate.didRangeBeaconsInRegion()
+        // .subscribe(
+        //     data => console.log('didRangeBeaconsInRegion: ', data),
+        //     error => console.error()
+        // );
+        // delegate.didStartMonitoringForRegion()
+        // .subscribe(
+        //     data => console.log('didStartMonitoringForRegion: ', data),
+        //     error => console.error()
+        // );
+        // delegate.didEnterRegion()
+        // .subscribe(
+        //     data => {
+        //     console.log('didEnterRegion: ', data);
+        //     }
+        // );
+        // let beaconRegion = this.ibeacon.BeaconRegion('deskBeacon','fda50693-a4e2-4fb1-afcf-c6eb07647825');
 
-        this.ibeacon.startMonitoringForRegion(beaconRegion)
-        .then(
-            () => console.log('Native layer recieved the request to monitoring'),
-            error => console.error('Native layer failed to begin monitoring: ', error)
-        );
+        // this.ibeacon.startMonitoringForRegion(beaconRegion)
+        // .then(
+        //     () => console.log('Native layer recieved the request to monitoring'),
+        //     error => console.error('Native layer failed to begin monitoring: ', error)
+        // );
 
     }
+  //  const fileTransfer: TransferObject = this.transfer.create();
+    downloadFile(){
+      const fileTransfer: TransferObject = this.transfer.create();
+    }
+    download() {
+    const fileTransfer: TransferObject = this.transfer.create();
+    const url = 'http://www.jumh.cn/wolvtong/upload/e4840214-ec88-40e9-815a-6dca56c1427e.mp3';
+    fileTransfer.download(url, this.file.dataDirectory + 'e4840214-ec88-40e9-815a-6dca56c1427e.mp3').then((entry) => {
+      alert('download complete: ' + entry.toURL());
+      }, (error) => {
+       alert(error);
+      });
+    }
+    //开始导航
+    startDaohang(){
+      this.ibeacon.enableBluetooth();
+    }
+    ionViewWillUnload(){
+        this.stopAllInYuyindaohang();
+    }
+    //退出页面时关闭所有在导航的内容
+    stopAllInYuyindaohang(){
 
+    }
     ionViewWillEnter(){
     //地图多次初始化会出错。此处设置只在首次载入时进行初始化
     if(!this.mapInited){
@@ -68,7 +94,7 @@ var p=new BMap.Point(geoData_[0],geoData_[1]);
     var voiceLocs=`118.794963,32.02559;118.796679,32.027113;118.797829,32.02709;118.797487,32.026884
     ;118.796445,32.026715;118.795799,32.025514`;
     var voiceLocs2=voiceLocs.split(";");
-var icon = new BMap.Icon('../../assets/img/erji_07.png', new BMap.Size(20, 32), {
+var icon = new BMap.Icon('assets/img/erji_07.png', new BMap.Size(20, 32), {
     anchor: new BMap.Size(10, 30)
 });
     for(var a=0;a<voiceLocs2.length;a++){

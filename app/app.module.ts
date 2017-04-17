@@ -18,6 +18,8 @@ import {Yuyindaoyou} from '../pages/home/yuyindaoyou/yuyindaoyou';
 
 //Native
 import { IBeacon } from '@ionic-native/ibeacon';
+import { Transfer,  TransferObject } from '@ionic-native/transfer';
+import { File } from '@ionic-native/file';
 @NgModule({
   declarations: [
     MyApp,
@@ -57,7 +59,7 @@ import { IBeacon } from '@ionic-native/ibeacon';
     SplashScreen,
     APPConfigService,
     SeneceListFactory,
-    IBeacon,
+    IBeacon,Transfer,TransferObject,File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
