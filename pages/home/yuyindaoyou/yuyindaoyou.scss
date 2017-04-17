@@ -1,0 +1,19 @@
+.yuyinCtrlContainer{
+    height:60px;
+    position:absolute;
+    bottom:0px;
+    text-align:center;
+    width: 100%;
+    
+}
+.yuyinCtrlInnerContainer{
+    height:40px;
+   border-radius: 20px;
+    display: inline-flex;
+    background: #eee;
+    align-items: center;
+    padding-right: 10px;
+    border: solid 1px #aaa;
+    box-sizing: content-box;
+}
+ 

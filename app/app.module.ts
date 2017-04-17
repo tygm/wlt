@@ -1,18 +1,23 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyApp } from './app.component';
 
+//Custom
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-
 import { SeceneList } from '../modals/secenelist.modal';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
 import {APPConfigService} from '../appconstant/constant.service'
 import {SeneceListFactory} from '../service/secenelist.service'
+import {SeceneIntroduce} from '../pages/home/seceneIntroduce/seceneIntroduce';
+import {Yuyindaoyou} from '../pages/home/yuyindaoyou/yuyindaoyou';
+
+//Native
+import { IBeacon } from '@ionic-native/ibeacon';
 @NgModule({
   declarations: [
     MyApp,
@@ -20,7 +25,9 @@ import {SeneceListFactory} from '../service/secenelist.service'
     ContactPage,
     HomePage,
     TabsPage,
-    SeceneList
+    SeceneList,
+    SeceneIntroduce,
+    Yuyindaoyou
   ],
   imports: [
     BrowserModule,
@@ -41,13 +48,16 @@ import {SeneceListFactory} from '../service/secenelist.service'
     ContactPage,
     HomePage,
     TabsPage,
-    SeceneList
+    SeceneList,
+    SeceneIntroduce,
+    Yuyindaoyou
   ],
   providers: [
     StatusBar,
     SplashScreen,
     APPConfigService,
     SeneceListFactory,
+    IBeacon,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

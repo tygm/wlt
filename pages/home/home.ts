@@ -1,9 +1,12 @@
 import { Component ,OnInit,ViewChild,ElementRef,Renderer } from '@angular/core';
-import { NavController,ModalController,NavParams,Platform,ViewController } from 'ionic-angular';
+import { NavController,ModalController } from 'ionic-angular';
 import { Content } from 'ionic-angular';
 import { SeceneList } from '../../modals/secenelist.modal';
 import { Secene } from '../../model/secene';
 import { SeneceListFactory } from '../../service/secenelist.service';
+import {SeceneIntroduce} from './seceneIntroduce/seceneIntroduce';
+import {Yuyindaoyou} from './yuyindaoyou/yuyindaoyou';
+import {APPConfigService} from '../../appconstant/constant.service';
 declare var BMap;
 @Component({
   selector: 'page-home',
@@ -14,8 +17,24 @@ export class HomePage implements OnInit{
   mapInited:boolean=false;
   secene:Secene;
   constructor(public modalController:ModalController,public navCtrl: NavController,public el: ElementRef,
-  public render:Renderer,public mSeneceListFactory:SeneceListFactory ) {
-this.secene=this.mSeneceListFactory.getCurrentSecene();
+  public render:Renderer,public mSeneceListFactory:SeneceListFactory ,public mAPPConfigService:APPConfigService) {
+  
+  this.secene=this.mSeneceListFactory.getCurrentSecene();  
+  mSeneceListFactory.currentSeceneChanged$.subscribe(
+      secene => {
+        this.secene=secene;
+      }); 
+     // navCtrl.push(AboutPage);
+  }
+  goToOtherPage(id:number){
+    switch(id){
+      case 1:
+      this.navCtrl.push(SeceneIntroduce);
+      break;
+      case 4:
+      this.navCtrl.push(Yuyindaoyou);
+      break;
+    }
   }
   ngOnInit(){
 
@@ -24,6 +43,7 @@ this.secene=this.mSeneceListFactory.getCurrentSecene();
     //地图多次初始化会出错。此处设置只在首次载入时进行初始化
     if(!this.mapInited){
       this.mapInited=true;
+      this.mAPPConfigService.setContentHeight(this.content.contentHeight);
      var height=this.content.contentHeight-280-5;
      this.render.setElementStyle(this.el.nativeElement.querySelector('#homemap'),"height",height+"px");
      var map = new BMap.Map("homemap");
@@ -47,7 +67,7 @@ var p=new BMap.Point(geoData_[0],geoData_[1]);
     var voiceLocs=`118.794963,32.02559;118.796679,32.027113;118.797829,32.02709;118.797487,32.026884
     ;118.796445,32.026715;118.795799,32.025514`;
     var voiceLocs2=voiceLocs.split(";");
-var icon = new BMap.Icon('../../assets/img/erji_07.png', new BMap.Size(20, 32), {
+var icon = new BMap.Icon('assets/img/erji_07.png', new BMap.Size(20, 32), {
     anchor: new BMap.Size(10, 30)
 });
     for(var a=0;a<voiceLocs2.length;a++){
